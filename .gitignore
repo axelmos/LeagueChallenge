@@ -1,0 +1,40 @@
+# Xcode
+.DS_Store
+*.xcodeproj/xcuserdata/
+*.xcodeproj/project.xcworkspace/xcuserdata/
+*.xcworkspace/xcuserdata/
+*.xcuserdatad/
+DerivedData/
+build/
+*.app
+*.ipa
+*.dSYM
+*.o
+*.lo
+*.la
+*.so
+*.dylib
+*.a
+*.pyc
+*.swp
+
+# Swift Package Manager
+.build/
+
+# CocoaPods (if used)
+Pods/
+Podfile.lock
+
+# Carthage (if used)
+Carthage/
+
+# fastlane (if used)
+fastlane/report.xml
+fastlane/screenshots/
+fastlane/test_output/
+
+# Other
+.swiftpm/
+.vscode/
+.idea/
+.tool-versions

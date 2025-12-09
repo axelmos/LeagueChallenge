@@ -1,0 +1,17 @@
+/* 
+  Localizable.strings
+  LeagueiOSChallenge
+
+  Created by Axel Mosiejko on 09/12/2025.
+  
+*/
+
+USERNAME = "Username";
+PASSWORD = "Password";
+LOGIN = "Login";
+CONTINUE_AS_GUEST = "Continue as Guest";
+POSTS = "Posts";
+EXIT = "Exit";
+LOGOUT = "Logout";
+EXIT_ALERT_TITLE = "Thank you for trialing this app";
+OK = "OK";
