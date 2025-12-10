@@ -201,8 +201,8 @@
 			isa = PBXGroup;
 			children = (
 				88480238282C16A800AF1595 /* LeagueiOSChallenge */,
-				8848024F282C16A900AF1595 /* LeagueiOSChallengeTests */,
-				88480259282C16A900AF1595 /* LeagueiOSChallengeUITests */,
+				8848024F282C16A900AF1595 /* Tests */,
+				88480259282C16A900AF1595 /* UITests */,
 				88480237282C16A800AF1595 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -231,7 +231,7 @@
 			path = LeagueiOSChallenge;
 			sourceTree = "<group>";
 		};
-		8848024F282C16A900AF1595 /* LeagueiOSChallengeTests */ = {
+		8848024F282C16A900AF1595 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				2FE504DC2EE8B5990032A9C2 /* APIClientMock.swift */,
@@ -239,16 +239,16 @@
 				2FE504E02EE8B5FE0032A9C2 /* PostsListViewModelTests.swift */,
 				2FE504E22EE8BBDC0032A9C2 /* UserInfoViewModelTests.swift */,
 			);
-			path = LeagueiOSChallengeTests;
+			path = Tests;
 			sourceTree = "<group>";
 		};
-		88480259282C16A900AF1595 /* LeagueiOSChallengeUITests */ = {
+		88480259282C16A900AF1595 /* UITests */ = {
 			isa = PBXGroup;
 			children = (
 				8848025A282C16A900AF1595 /* LeagueiOSChallengeUITests.swift */,
 				8848025C282C16A900AF1595 /* LeagueiOSChallengeUITestsLaunchTests.swift */,
 			);
-			path = LeagueiOSChallengeUITests;
+			path = UITests;
 			sourceTree = "<group>";
 		};
 		8848026D282C185700AF1595 /* Root */ = {
