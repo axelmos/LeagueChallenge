@@ -15,7 +15,7 @@ final class PostsListViewModel {
         didSet { onPostsUpdated?() }
     }
 
-    // Callbacks
+    // Callbacks (closures)
     var onPostsUpdated: (() -> Void)?
     var onLoadingChanged: ((Bool) -> Void)?
     var onError: ((String?) -> Void)?

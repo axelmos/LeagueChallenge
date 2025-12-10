@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		2FE504682EE736600032A9C2 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE504672EE7365E0032A9C2 /* User.swift */; };
 		2FE5046A2EE736730032A9C2 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE504692EE736710032A9C2 /* Post.swift */; };
-		2FE5046C2EE736830032A9C2 /* Album.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5046B2EE736810032A9C2 /* Album.swift */; };
-		2FE5046E2EE736B10032A9C2 /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5046D2EE736AF0032A9C2 /* Photo.swift */; };
 		2FE504702EE73A0A0032A9C2 /* APIClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE5046F2EE73A060032A9C2 /* APIClientProtocol.swift */; };
 		2FE504722EE73AA70032A9C2 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE504712EE73AA40032A9C2 /* LoginViewModel.swift */; };
 		2FE504742EE73BD70032A9C2 /* PostsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FE504732EE73BD40032A9C2 /* PostsListViewModel.swift */; };
@@ -61,8 +59,6 @@
 /* Begin PBXFileReference section */
 		2FE504672EE7365E0032A9C2 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		2FE504692EE736710032A9C2 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
-		2FE5046B2EE736810032A9C2 /* Album.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Album.swift; sourceTree = "<group>"; };
-		2FE5046D2EE736AF0032A9C2 /* Photo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		2FE5046F2EE73A060032A9C2 /* APIClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientProtocol.swift; sourceTree = "<group>"; };
 		2FE504712EE73AA40032A9C2 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		2FE504732EE73BD40032A9C2 /* PostsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsListViewModel.swift; sourceTree = "<group>"; };
@@ -286,8 +282,6 @@
 				88C4E6B7282C60AF00CD3E33 /* LoginResponse.swift */,
 				2FE504672EE7365E0032A9C2 /* User.swift */,
 				2FE504692EE736710032A9C2 /* Post.swift */,
-				2FE5046B2EE736810032A9C2 /* Album.swift */,
-				2FE5046D2EE736AF0032A9C2 /* Photo.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -433,7 +427,6 @@
 				2FE504722EE73AA70032A9C2 /* LoginViewModel.swift in Sources */,
 				2FE504682EE736600032A9C2 /* User.swift in Sources */,
 				2FE5047C2EE74B6F0032A9C2 /* AppCoordinator.swift in Sources */,
-				2FE5046E2EE736B10032A9C2 /* Photo.swift in Sources */,
 				8848023A282C16A800AF1595 /* AppDelegate.swift in Sources */,
 				8848023C282C16A800AF1595 /* SceneDelegate.swift in Sources */,
 				2FE504822EE75D330032A9C2 /* PostsListViewController.swift in Sources */,
@@ -448,7 +441,6 @@
 				2FE5047E2EE7587F0032A9C2 /* APIEndpoint.swift in Sources */,
 				2FE504872EE7669A0032A9C2 /* UserInfoViewController.swift in Sources */,
 				2FE504762EE73C1A0032A9C2 /* PostItem.swift in Sources */,
-				2FE5046C2EE736830032A9C2 /* Album.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
