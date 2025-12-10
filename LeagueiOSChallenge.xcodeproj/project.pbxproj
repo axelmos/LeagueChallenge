@@ -32,7 +32,6 @@
 		8848023C282C16A800AF1595 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848023B282C16A800AF1595 /* SceneDelegate.swift */; };
 		88480243282C16A900AF1595 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88480242282C16A900AF1595 /* Assets.xcassets */; };
 		88480246282C16A900AF1595 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88480244282C16A900AF1595 /* LaunchScreen.storyboard */; };
-		88480251282C16A900AF1595 /* LeagueiOSChallengeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88480250282C16A900AF1595 /* LeagueiOSChallengeTests.swift */; };
 		8848025B282C16A900AF1595 /* LeagueiOSChallengeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848025A282C16A900AF1595 /* LeagueiOSChallengeUITests.swift */; };
 		8848025D282C16A900AF1595 /* LeagueiOSChallengeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848025C282C16A900AF1595 /* LeagueiOSChallengeUITestsLaunchTests.swift */; };
 		88480270282C18D500AF1595 /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8848026F282C18D500AF1595 /* APIHelper.swift */; };
@@ -85,7 +84,6 @@
 		88480245282C16A900AF1595 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		88480247282C16A900AF1595 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8848024C282C16A900AF1595 /* LeagueiOSChallengeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeagueiOSChallengeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		88480250282C16A900AF1595 /* LeagueiOSChallengeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueiOSChallengeTests.swift; sourceTree = "<group>"; };
 		88480256282C16A900AF1595 /* LeagueiOSChallengeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LeagueiOSChallengeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8848025A282C16A900AF1595 /* LeagueiOSChallengeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueiOSChallengeUITests.swift; sourceTree = "<group>"; };
 		8848025C282C16A900AF1595 /* LeagueiOSChallengeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeagueiOSChallengeUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -240,7 +238,6 @@
 				2FE504DE2EE8B5B60032A9C2 /* LoginViewModelTests.swift */,
 				2FE504E02EE8B5FE0032A9C2 /* PostsListViewModelTests.swift */,
 				2FE504E22EE8BBDC0032A9C2 /* UserInfoViewModelTests.swift */,
-				88480250282C16A900AF1595 /* LeagueiOSChallengeTests.swift */,
 			);
 			path = LeagueiOSChallengeTests;
 			sourceTree = "<group>";
@@ -451,7 +448,6 @@
 				2FE504E12EE8B6040032A9C2 /* PostsListViewModelTests.swift in Sources */,
 				2FE504DF2EE8B5BC0032A9C2 /* LoginViewModelTests.swift in Sources */,
 				2FE504E32EE8BBE10032A9C2 /* UserInfoViewModelTests.swift in Sources */,
-				88480251282C16A900AF1595 /* LeagueiOSChallengeTests.swift in Sources */,
 				2FE504DD2EE8B59C0032A9C2 /* APIClientMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

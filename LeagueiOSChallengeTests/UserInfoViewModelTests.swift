@@ -17,11 +17,7 @@ final class UserInfoViewModelTests: XCTestCase {
             avatar: "https://avatar.png",
             name: "Axel Mosiejko",
             username: "axelmos",
-            email: "axel@example.com",
-            address: nil,
-            phone: nil,
-            website: nil,
-            company: nil
+            email: "axel@example.com"
         )
 
         let vm = UserInfoViewModel(user: user)
@@ -69,11 +65,7 @@ private extension User {
             avatar: "avatar",
             name: "Test",
             username: "test",
-            email: email,
-            address: nil,
-            phone: nil,
-            website: nil,
-            company: nil
+            email: email
         )
     }
 }

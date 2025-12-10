@@ -23,11 +23,7 @@ final class PostsListViewModelTests: XCTestCase {
                  avatar: "url",
                  name: "John",
                  username: "jdoe",
-                 email: "a@b.com",
-                 address: nil,
-                 phone: nil,
-                 website: nil,
-                 company: nil)
+                 email: "a@b.com")
         ])
 
         let vm = PostsListViewModel(apiClient: APIClientWrapper(mock), apiKey: "123")

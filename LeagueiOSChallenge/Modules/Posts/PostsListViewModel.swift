@@ -22,10 +22,10 @@ final class PostsListViewModel {
     var didRequestLogout: (() -> Void)?
 
     // Dependencies
-    private let apiClient: APIClient
+    private let apiClient: APIClientProtocol
     private let apiKey: String
 
-    init(apiClient: APIClient, apiKey: String) {
+    init(apiClient: APIClientProtocol, apiKey: String) {
         self.apiClient = apiClient
         self.apiKey = apiKey
     }
