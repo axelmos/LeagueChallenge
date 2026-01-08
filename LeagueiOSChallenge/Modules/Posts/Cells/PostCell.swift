@@ -55,27 +55,25 @@ final class PostCell: UITableViewCell {
         fatalError()
     }
 
-    func configure(with post: PostItem) {
+    func configure(with post: PostViewData) {
         user = post.user
-        usernameLabel.text = post.user?.username
+        usernameLabel.text = post.user.username
         titleLabel.text = post.title
         bodyLabel.text = post.body
 
-        // Load avatar if exists
-        if let url = post.user?.avatar {
-            Task { [weak self] in
-                guard let self = self else { return }
-                if let img = await ImageLoader.shared.loadImage(from: url) {
-                    await MainActor.run {
-                        UIView.transition(
-                            with: self.avatarImageView,
-                            duration: 0.15,
-                            options: .transitionCrossDissolve,
-                            animations: {
-                                self.avatarImageView.image = img
-                            }
-                        )
-                    }
+        // Load avatar
+        Task { [weak self] in
+            guard let self = self else { return }
+            if let img = await ImageLoader.shared.loadImage(from: post.user.avatar) {
+                await MainActor.run {
+                    UIView.transition(
+                        with: self.avatarImageView,
+                        duration: 0.15,
+                        options: .transitionCrossDissolve,
+                        animations: {
+                            self.avatarImageView.image = img
+                        }
+                    )
                 }
             }
         }

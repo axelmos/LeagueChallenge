@@ -16,7 +16,7 @@ final class PostsListViewController: UIViewController {
     private let tableView = UITableView(frame: .zero, style: .plain)
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     private let errorLabel = UILabel()
-
+    private var cancellables = Set<AnyCancellable>()
     var onUserSelected: ((User) -> Void)?
 
     init(viewModel: PostsListViewModel, isGuest: Bool) {
@@ -135,22 +135,29 @@ private extension PostsListViewController {
 
     func bindViewModel() {
 
-        // Bind posts changes and reload table
-        viewModel.onPostsUpdated = {
-            [weak self] in self?.tableView.reloadData()
-        }
-        
-        // Bind loading state
-        viewModel.onLoadingChanged = { [weak self] isLoading in
-            isLoading ? self?.activityIndicator.startAnimating()
-                      : self?.activityIndicator.stopAnimating()
-        }
+        viewModel.$posts
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                self?.tableView.reloadData()
+            }
+            .store(in: &cancellables)
 
-        // Bind error messages
-        viewModel.onError = { [weak self] message in
-            self?.errorLabel.isHidden = (message == nil)
-            self?.errorLabel.text = message
-        }
+        viewModel.$isLoading
+            .receive(on: RunLoop.main)
+            .sink { [weak self] isLoading in
+                isLoading
+                ? self?.activityIndicator.startAnimating()
+                : self?.activityIndicator.stopAnimating()
+            }
+            .store(in: &cancellables)
+
+        viewModel.$errorMessage
+            .receive(on: RunLoop.main)
+            .sink { [weak self] message in
+                self?.errorLabel.isHidden = (message == nil)
+                self?.errorLabel.text = message
+            }
+            .store(in: &cancellables)
     }
 }
 
@@ -169,7 +176,7 @@ extension PostsListViewController: UITableViewDataSource, UITableViewDelegate {
         let item = viewModel.posts[indexPath.row]
 
         cell.configure(with: item)
-        cell.tag = item.userId
+        cell.tag = item.user.id
 
         cell.onUserTapped = { [weak self] user in
             self?.onUserSelected?(user)

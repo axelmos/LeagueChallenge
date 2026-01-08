@@ -6,11 +6,14 @@
 //
 
 import XCTest
+import Combine
 @testable import LeagueiOSChallenge
 
 @MainActor
 final class PostsListViewModelTests: XCTestCase {
 
+    private var cancellables: Set<AnyCancellable> = []
+    
     func test_loadPosts_mergesUsersCorrectly() async {
         let mock = APIClientMock()
 
@@ -28,30 +31,45 @@ final class PostsListViewModelTests: XCTestCase {
 
         let vm = PostsListViewModel(apiClient: APIClientWrapper(mock), apiKey: "123")
 
-        var updatedCalled = false
-        vm.onPostsUpdated = { updatedCalled = true }
+        let expectation = XCTestExpectation(description: "Posts loaded")
+
+        vm.$posts
+            .dropFirst() // ignore initial empty value
+            .sink { posts in
+                XCTAssertEqual(posts.count, 1)
+                XCTAssertEqual(posts.first?.user.username, "jdoe")
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
 
         vm.loadPosts()
-        try? await Task.sleep(nanoseconds: 50_000_000)
 
-        XCTAssertTrue(updatedCalled)
-        XCTAssertEqual(vm.posts.count, 1)
-        XCTAssertEqual(vm.posts.first?.user?.username, "jdoe")
+        await fulfillment(of: [expectation], timeout: 1.0)
     }
 
     func test_loadPosts_error() async {
+
         let mock = APIClientMock()
         mock.postsResult = .failure(NSError(domain: "X", code: 1))
 
-        let vm = PostsListViewModel(apiClient: APIClientWrapper(mock), apiKey: "123")
+        let vm = PostsListViewModel(
+            apiClient: mock,
+            apiKey: "123"
+        )
 
-        var errorMessage: String?
-        vm.onError = { err in errorMessage = err }
+        let expectation = XCTestExpectation(description: "Error received")
+
+        vm.$errorMessage
+            .compactMap { $0 }
+            .sink { error in
+                XCTAssertFalse(error.isEmpty)
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
 
         vm.loadPosts()
-        try? await Task.sleep(nanoseconds: 50_000_000)
 
-        XCTAssertNotNil(errorMessage)
+        await fulfillment(of: [expectation], timeout: 1.0)
     }
 }
 

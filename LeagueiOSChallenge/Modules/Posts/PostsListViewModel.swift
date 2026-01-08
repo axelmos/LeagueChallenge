@@ -6,60 +6,68 @@
 //
 
 import Foundation
+import Combine
 
-@MainActor
 final class PostsListViewModel {
 
-    // Output
-    private(set) var posts: [PostItem] = [] {
-        didSet { onPostsUpdated?() }
-    }
-
-    // Callbacks (closures)
-    var onPostsUpdated: (() -> Void)?
-    var onLoadingChanged: ((Bool) -> Void)?
-    var onError: ((String?) -> Void)?
     var didRequestLogout: (() -> Void)?
+    
+    // MARK: - Outputs (Combine)
+    @Published private(set) var posts: [PostViewData] = []
+    @Published private(set) var isLoading: Bool = false
+    @Published private(set) var errorMessage: String?
 
-    // Dependencies
+    // MARK: - Dependencies
     private let apiClient: APIClientProtocol
     private let apiKey: String
 
+    private var cancellables = Set<AnyCancellable>()
+
+    // MARK: - Init
     init(apiClient: APIClientProtocol, apiKey: String) {
         self.apiClient = apiClient
         self.apiKey = apiKey
     }
 
-    // MARK: - Load Posts
+    // MARK: - Actions
     func loadPosts() {
-        onLoadingChanged?(true)
+        isLoading = true
+        errorMessage = nil
 
         Task {
             do {
-                let fetchedPosts = try await apiClient.fetchPosts(apiKey: apiKey)
-                let users = try await apiClient.fetchUsers(apiKey: apiKey)
+                // ✅ Parallel requests
+                async let postsRequest = apiClient.fetchPosts(apiKey: apiKey)
+                async let usersRequest = apiClient.fetchUsers(apiKey: apiKey)
+
+                let (posts, users) = try await (postsRequest, usersRequest)
 
                 let userMap = Dictionary(uniqueKeysWithValues:
                     users.map { ($0.id, $0) }
                 )
 
-                let mapped: [PostItem] = fetchedPosts.map { post in
-                    let user = userMap[post.userId]
+                let mapped: [PostViewData] = posts.compactMap { post in
+                    guard let user = userMap[post.userId] else { return nil }
 
-                    return PostItem(
+                    return PostViewData(
                         id: post.id,
                         title: post.title,
                         body: post.body,
-                        userId: post.userId,
                         user: user
                     )
                 }
 
-                self.posts = mapped
-                onLoadingChanged?(false)
+                // ✅ UI updates isolated to MainActor
+                await MainActor.run {
+                    self.posts = mapped
+                    self.isLoading = false
+                }
+
             } catch {
-                onLoadingChanged?(false)
-                onError?(error.localizedDescription)
+                await MainActor.run {
+                    self.errorMessage = error.localizedDescription
+                    self.isLoading = false
+                }
             }
         }
     }
